@@ -17,7 +17,7 @@ if (!isset($_SESSION['customerID'])){
 </head>
 <body>
 <header>
-    <h1>Simple Customized Customer’s Garment System</h1>
+    <h1>Mr Hizzy Garment Store</h1>
 </header>
 
 <nav>
