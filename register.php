@@ -1,0 +1,78 @@
+<?php
+ob_start();
+session_start(); 
+include_once "helper_functions/loader.php";
+$con = connect_to_db('localhost','root','','garment_system');
+
+if (isset($_SESSION['customerID'])){
+    header("Location: dashboard.php");
+}
+
+extract($_POST);
+@$data = " full_name = '$fname' ";
+@$data .= ", address = '$address' ";
+@$data .= ", phone = '$tel' ";
+@$data .= ", email = '$mail' ";
+@$data .= ", pass = '$passme' ";
+/* endOfData */
+
+if (!empty($fname) && !empty($address) && !empty($tel) && !empty($mail) && !empty($passme)){
+    if(comfirm_query($con) !== false){
+        if ($con->query("INSERT INTO customers set ".$data)){
+            echo "<script>alert('Registration Successful! You can now log in.');</script>";
+            header("Location: login.php");
+        }else{
+            echo "<script>alert('Registration Failed! Please try again.');</script>";
+        }
+    }
+}
+
+
+?>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cooperative Society - Register</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/login.css">
+</head>
+<body>
+
+<div class="register-card">
+    <h3 class="text-center mb-3 creatH">Create Your Account</h3>
+    <form action="<?php $_SELF_PHP ?>" method="POST" enctype="multipart/form-data">
+        <div class="mb-3">
+            <label class="form-label">Full Name</label>
+            <input type="text" name="fname" class="form-control" placeholder="e.g., Ezekiel" required>
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Phone</label>
+            <input type="tel" name="tel" class="form-control" placeholder="+234 801 234 5678" required>
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Email</label>
+            <input type="email" name="mail" class="form-control" placeholder="you@example.com" required>
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Address</label>
+            <input type="text" name="address" class="form-control" placeholder="Street, City, State" required>
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Password</label>
+            <input type="password" name="passme" class="form-control" placeholder="********" required>
+        </div>
+        <button type="submit" class="btn btn-primary w-100">Register</button>
+    </form>
+
+    <p class="text-center mt-3">
+        Already a member? <a href="login.php">Login</a>
+    </p>
+    <p class="text-center"><a href="index.php">← Back to Home</a></p>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
