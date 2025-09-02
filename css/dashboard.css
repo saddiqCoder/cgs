@@ -20,6 +20,10 @@ header h1 {
     text-transform: uppercase;
 }
 
+.container > h2 {
+    text-transform: uppercase;
+}
+
 nav {
     background: #34495e;
     padding: 10px;

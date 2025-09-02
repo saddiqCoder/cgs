@@ -20,8 +20,9 @@ if (!empty($mail) && !empty($passme)){
         
         if (count($runresult) > 0){
             extract($runresult);
-            $customeruser['id'] = $id;
-            $customeruser['fname'] = $firstname;
+            $customeruser['id'] = $customer_id;
+            $customeruser['fname'] = $full_name;
+            $customeruser['phone'] = $phone;
             $customeruser['email'] = $mail;
             $customeruser['password'] = $passme;
             $_SESSION['customerID'] = $customeruser;

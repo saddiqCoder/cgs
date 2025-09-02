@@ -29,8 +29,8 @@ if (isset($_SESSION['customeruser'])) {
         <h1 class="display-4 fw-bold">Garment Customization System</h1>
         <p class="lead">Design your garment, choose your fabric, and order online</p>
         <div class="mt-4">
-            <a href="#" class="btn btn-warning me-2">Browse Garments</a>
-            <a href="#" class="btn btn-light me-2">Customize & Order</a>
+            <!-- <a href="#" class="btn btn-warning me-2">Browse Garments</a>
+            <a href="#" class="btn btn-light me-2">Customize & Order</a> -->
             <a href="login.php" class="btn btn-outline-light me-2">Login</a>
             <a href="register.php" class="btn btn-outline-warning me-2">Register</a>
             <a href="admin/admin.php" class="btn btn-danger">Admin</a>

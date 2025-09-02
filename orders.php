@@ -1,3 +1,15 @@
+<?php
+ob_start();
+session_start();
+error_reporting(E_ALL);
+include_once "helper_functions/loader.php";
+$con = connect_to_db('localhost','root','','garment_system');
+
+if (!isset($_SESSION['customerID'])){
+    header("Location: login.php");
+}
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,11 +22,11 @@
 </header>
 
 <nav>
-    <a href="index.php">Home</a>
-    <a href="customers.php">Customers</a>
+    <a href="dashboard.php">Home</a>
     <a href="measurements.php">Measurements</a>
     <a href="garments.php">Garments</a>
-    <a href="orders.php">Orders</a>
+    <a href="#">Orders</a>
+    <a href="logout.php">Logout</a>
 </nav>
 
 <div class="container">

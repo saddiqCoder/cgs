@@ -1,6 +1,7 @@
 <?php
 ob_start();
-session_start(); 
+session_start();
+error_reporting(E_ALL);
 include_once "helper_functions/loader.php";
 $con = connect_to_db('localhost','root','','garment_system');
 
@@ -28,7 +29,7 @@ if (!isset($_SESSION['customerID'])){
 </nav>
 
 <div class="container">
-    <h2>Welcome to the Garment System</h2>
+    <h2>Hi <?php echo $_SESSION['customerID']['fname'];?> &#129303; Welcome to our Garment Store</h2>
     <p>Select a module from the navigation above to manage records.</p>
 </div>
 </body>
